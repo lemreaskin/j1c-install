@@ -5,10 +5,10 @@ Bu kurulum, JetPack 6.0 (Ubuntu 22.04 + L4T 36.2.0) ile uyumludur ve en kararlı
 
 ## Özellikler
 
-- CUDA, cuDNN, TensorRT, VPI gibi sistem bileşenlerini otomatik kurulur.
-- Python ortamı (`venv`) oluşturur ve gerekli pip kütüphanelerini yüklenir.
+- CUDA, cuDNN, TensorRT, VPI gibi sistem bileşenleri otomatik kurulur.
+- Python ortamı (`venv`) oluşturur ve gerekli pip kütüphaneleri yüklenir.
 - Jetson’a özel PyTorch + torchvision kurulur.
-- **YOLOv12**, **RT-DETR** gibi modelleri hızlıca çalıştırmak için hazır environment oluşturulmasına olanak sağlar.
+- **YOLOv12**, **RT-DETR** gibi modelleri hızlıca çalıştırmak için hazır environment oluşturulmasına olanak sağlanır.
 
 ## Kurulum
 
@@ -25,7 +25,7 @@ cd jetson-oneclick-install
 bash install.sh
 ```
 
-Bir oluşturulacak Python ortamına bir isim vermeniz gerekir. Varsayılan olarak `jetson-env` kullanılır.
+Bir oluşturulacak Python ortamına bir isim vermeniz gerekir, varsayılan olarak `jetson-env` kullanılır.
 
 ### 3. Ortamı etkinleştirin
 
