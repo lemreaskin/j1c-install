@@ -1,7 +1,7 @@
 # Jetson 1-Click (J1C) Install
 
 Projenin amacı tek komutla Jetson'a temiz bir kurulum gerçekleştirmektir.
-Bu kurulum, JetPack 6.0 (Ubuntu 22.04 + L4T 36.2.0) ile uyumludur ve en kararlı AI/ML kütüphaneleri ile birlikte gelir.
+Bu kurulum, **JetPack 6.0 (Ubuntu 22.04 + L4T 36.2.0)** ile uyumludur ve en kararlı AI/ML kütüphaneleri ile birlikte gelir.
 
 ## Özellikler
 
