@@ -15,7 +15,7 @@ Bu kurulum, JetPack 6.0 (Ubuntu 22.04 + L4T 36.2.0) ile uyumludur ve en kararlı
 ### 1. Repoyu klonlayın
 
 ```bash
-git clone https://github.com/lemreaskin/jetson-oneclick-install.git
+git clone https://github.com/lemreaskin/jetson-1click-install.git
 cd jetson-oneclick-install
 ```
 
