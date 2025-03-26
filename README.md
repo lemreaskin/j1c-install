@@ -16,7 +16,7 @@ Bu kurulum, JetPack 6.0 (Ubuntu 22.04 + L4T 36.2.0) ile uyumludur ve en kararlı
 
 ```bash
 git clone https://github.com/lemreaskin/j1c-install.git
-cd jetson-oneclick-install
+cd j1c-install
 ```
 
 ### 2. Kurulumu başlatın
