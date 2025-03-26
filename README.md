@@ -53,7 +53,7 @@ source <ortam-adi>/bin/activate
 ## Sık Sorulan Sorular (FAQ)
 
 ### Kurulum ne kadar sürer?
--- İnternet hızınıza bağlı olarak 10-25 dakika ya da daha fazla sürebilir.
+→ İnternet hızınıza bağlı olarak 10-25 dakika ya da daha fazla sürebilir.
 
 ### `venv` yerine `conda` kullanabilir miyim?
--- Bu kurulum yalnızca `pip + venv` ile tasarlanmıştır. 
+→ Bu kurulum yalnızca `pip + venv` ile tasarlanmıştır. 
