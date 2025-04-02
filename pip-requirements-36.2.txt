@@ -9,9 +9,9 @@ opencv-python-headless==4.7.0.72
 onnx==1.14.0
 onnxruntime-gpu==1.15.1
 pycuda==2022.2
-jetson-stats==4.2.2
 ultralytics==8.0.221
 transformers==4.35.2
 datasets==2.14.5
 imageio==2.31.1
 imageio-ffmpeg==0.4.8
+jetson-stats==4.2.2

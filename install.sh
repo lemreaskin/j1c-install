@@ -1,11 +1,9 @@
 #!/bin/bash
 set -e
 
-# Renk tanımları
 GREEN='\033[0;32m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-# Basit işlem göstergesi
 function step() {
   local MSG=$1
   echo -ne "${GREEN}[INFO]${NC} $MSG..."
@@ -15,7 +13,21 @@ function success() {
   echo -e " ${GREEN}✔️${NC}"
 }
 
-echo -e "${GREEN}Jetson One-Click Installer Başlıyor...${NC}"
+# JetPack sürümünü tespit et
+L4T_VERSION=$(head -n 1 /etc/nv_tegra_release | sed -n 's/.*R\([0-9]*\.[0-9]*\).*/\1/p')
+step "JetPack / L4T sürümü algılanıyor: $L4T_VERSION"
+echo ""
+
+# Ortama göre pip dosyasını ve torch wheel’larını belirle
+REQ_FILE="pip-requirements-$L4T_VERSION.txt"
+
+# pip-requirements kontrolü
+if [[ ! -f "$REQ_FILE" ]]; then
+  echo "[HATA] Bu JetPack sürümü için uyumlu kurulum dosyası bulunamadı: $L4T_VERSION"
+  exit 1
+fi
+
+# Ortam ismi iste
 read -p "Python ortamı için bir isim girin [default: jetson-env]: " ENV_NAME
 ENV_NAME=${ENV_NAME:-jetson-env}
 
@@ -29,12 +41,12 @@ source $ENV_NAME/bin/activate
 pip install --upgrade pip > /dev/null
 success
 
-step "[3/4] Python kütüphaneleri yükleniyor"
-pip install -r pip-requirements.txt
+step "[3/4] pip bağımlılıkları ($REQ_FILE) yükleniyor"
+pip install -r $REQ_FILE
 success
 
-step "[4/4] PyTorch + torchvision kuruluyor"
-bash install-pytorch.sh
+step "[4/4] PyTorch + torchvision wheel kurulumu"
+bash install-pytorch.sh $L4T_VERSION
 success
 
 echo ""
