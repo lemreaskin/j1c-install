@@ -18,16 +18,13 @@ L4T_VERSION=$(head -n 1 /etc/nv_tegra_release | sed -n 's/.*R\([0-9]*\.[0-9]*\).
 step "JetPack / L4T sürümü algılanıyor: $L4T_VERSION"
 echo ""
 
-# Ortama göre pip dosyasını ve torch wheel’larını belirle
 REQ_FILE="pip-requirements-$L4T_VERSION.txt"
 
-# pip-requirements kontrolü
 if [[ ! -f "$REQ_FILE" ]]; then
   echo "[HATA] Bu JetPack sürümü için uyumlu kurulum dosyası bulunamadı: $L4T_VERSION"
   exit 1
 fi
 
-# Ortam ismi iste
 read -p "Python ortamı için bir isim girin [default: jetson-env]: " ENV_NAME
 ENV_NAME=${ENV_NAME:-jetson-env}
 
