@@ -13,9 +13,22 @@ function success() {
   echo -e " ${GREEN}✔️${NC}"
 }
 
-# JetPack sürümünü tespit et
-L4T_VERSION=$(head -n 1 /etc/nv_tegra_release | sed -n 's/.*R\([0-9]*\.[0-9]*\).*/\1/p')
-step "JetPack / L4T sürümü algılanıyor: $L4T_VERSION"
+# JetPack (L4T) sürümünü tespit et
+if [ -f /etc/nv_tegra_release ]; then
+  L4T_VERSION=$(head -n 1 /etc/nv_tegra_release | sed -n 's/.*R\([0-9]*\.[0-9]*\).*/\1/p')
+elif grep -q "L4T_VERSION" /etc/os-release; then
+  L4T_VERSION=$(grep "L4T_VERSION" /etc/os-release | cut -d "=" -f2 | cut -c1-4)
+else
+  echo "[HATA] JetPack (L4T) sürümü tespit edilemedi. Lütfen tam JetPack kurulumu yapınız."
+  exit 1
+fi
+
+if [[ -z "$L4T_VERSION" ]]; then
+  echo "[HATA] JetPack (L4T) sürümü boş görünüyor. Lütfen sisteminizi kontrol ediniz."
+  exit 1
+fi
+
+step "Algılanan JetPack / L4T sürümü: $L4T_VERSION"
 echo ""
 
 REQ_FILE="pip-requirements-$L4T_VERSION.txt"
