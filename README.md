@@ -1,4 +1,4 @@
-# Jetson One-Click Install
+# Jetson One-Click Install (J1C)
 
 Bu projenin amacı, Jetson cihazınızda **tek komutla** AI/ML geliştirme ortamını kurmak.  
 İster sıfırdan flashlanmış bir sistem, ister eksik kütüphanelerle gelen bir kurulum olsun — `j1c` ile uyumlu, kararlı bir ortam hazırlayabilirsiniz.
@@ -23,8 +23,8 @@ Bu projenin amacı, Jetson cihazınızda **tek komutla** AI/ML geliştirme ortam
 ### 1. Repoyu klonlayın
 
 ```bash
-git clone https://github.com/lemreaskin/jetson-oneclick-install.git
-cd jetson-oneclick-install
+git clone https://github.com/lemreaskin/j1c-install.git
+cd j1c-install
 ```
 
 ### 2. Kurulumu başlatın
