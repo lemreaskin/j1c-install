@@ -15,8 +15,7 @@ function success() {
 
 # JetPack sürümünü tespit et
 if [ -f /etc/nv_tegra_release ]; then
-  R_LINE=$(grep -o 'R[0-9]*' /etc/nv_tegra_release)
-  R_NUM=${R_LINE//R/}
+  R_NUM=$(grep -oE 'R[:=]?([0-9]+)' /etc/nv_tegra_release | grep -oE '[0-9]+')
   if [[ "$R_NUM" == "32" ]]; then
     L4T_VERSION="32.7"
   elif [[ "$R_NUM" == "35" ]]; then
@@ -24,7 +23,7 @@ if [ -f /etc/nv_tegra_release ]; then
   elif [[ "$R_NUM" == "36" ]]; then
     L4T_VERSION=$(dpkg-query --show nvidia-l4t-core | awk '{print $2}' | cut -d. -f1,2)
   else
-    echo "[HATA] Desteklenmeyen JetPack R sürümü: $R_LINE"
+    echo "[HATA] Desteklenmeyen JetPack R sürümü: R${R_NUM}"
     exit 1
   fi
 else
