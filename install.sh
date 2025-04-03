@@ -13,18 +13,22 @@ function success() {
   echo -e " ${GREEN}✔️${NC}"
 }
 
-# JetPack (L4T) sürümünü tespit et
+# JetPack sürümünü tespit et
 if [ -f /etc/nv_tegra_release ]; then
-  L4T_VERSION=$(head -n 1 /etc/nv_tegra_release | sed -n 's/.*R\([0-9]*\.[0-9]*\).*/\1/p')
-elif grep -q "L4T_VERSION" /etc/os-release; then
-  L4T_VERSION=$(grep "L4T_VERSION" /etc/os-release | cut -d "=" -f2 | cut -c1-4)
+  R_LINE=$(grep -o 'R[0-9]*' /etc/nv_tegra_release)
+  R_NUM=${R_LINE//R/}
+  if [[ "$R_NUM" == "32" ]]; then
+    L4T_VERSION="32.7"
+  elif [[ "$R_NUM" == "35" ]]; then
+    L4T_VERSION="35.4"
+  elif [[ "$R_NUM" == "36" ]]; then
+    L4T_VERSION=$(dpkg-query --show nvidia-l4t-core | awk '{print $2}' | cut -d. -f1,2)
+  else
+    echo "[HATA] Desteklenmeyen JetPack R sürümü: $R_LINE"
+    exit 1
+  fi
 else
-  echo "[HATA] JetPack (L4T) sürümü tespit edilemedi. Lütfen tam JetPack kurulumu yapınız."
-  exit 1
-fi
-
-if [[ -z "$L4T_VERSION" ]]; then
-  echo "[HATA] JetPack (L4T) sürümü boş görünüyor. Lütfen sisteminizi kontrol ediniz."
+  echo "[HATA] JetPack sürümü algılanamıyor. /etc/nv_tegra_release bulunamadı."
   exit 1
 fi
 
