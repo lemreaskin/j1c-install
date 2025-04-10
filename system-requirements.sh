@@ -37,13 +37,13 @@ fi
 
 log_info "Geliştirme araçları ve kütüphaneler kuruluyor..."
 
+sudo apt update
 sudo apt install -y \
     build-essential \
     python3-pip \
     python3-venv \
     libopencv-dev \
     python3-opencv \
-    python3-vpi \
     vpi3-dev \
     gstreamer1.0-tools \
     gstreamer1.0-plugins-base \
@@ -53,6 +53,5 @@ sudo apt install -y \
     gstreamer1.0-libav \
     gstreamer1.0-alsa \
     gstreamer1.0-plugins-base-apps \
-    gstreamer1.0-plugins-nvvideo4linux2
 
 log_ok "Tüm sistem gereksinimleri tamamlandı."
